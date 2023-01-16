@@ -11,7 +11,8 @@ private Boolean estado;
 private int emisoraAM;
 private double emisoraFM;
 private int emisora;
-private int pos;
+private int posAM;
+private int posFM;
 private int emisorasAM[];  
 private double emisorasFM[];  
 Scanner teclado = new Scanner(System.in);
@@ -21,68 +22,11 @@ public radio_metodos()
     emisoraFM = 87.9;
     emisoraAM = 530;
     estado = false;
-    pos = 0;
+    posAM = 0;
+    posFM = 0;
     emisorasAM=new int[12];
     emisorasFM=new double[12];
     }
-
-    public Boolean isModulation() {
-        return this.modulation;
-    }
-
-    public Boolean getModulation() {
-        return this.modulation;
-    }
-
-    public void setModulation(Boolean modulation) {
-        this.modulation = modulation;
-    }
-
-    public Boolean isEstado() {
-        return this.estado;
-    }
-
-    public Boolean getEstado() {
-        return this.estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-
-    public int getEmisoraAM() {
-        return this.emisoraAM;
-    }
-
-    public void setEmisoraAM(int emisoraAM) {
-        this.emisoraAM = emisoraAM;
-    }
-
-    public double getEmisoraFM() {
-        return this.emisoraFM;
-    }
-
-    public void setEmisoraFM(double emisoraFM) {
-        this.emisoraFM = emisoraFM;
-    }
-
-    public int getEmisora() {
-        return this.emisora;
-    }
-
-    public void setEmisora(int emisora) {
-        this.emisora = emisora;
-    }
-
-    public int getPos() {
-        return this.pos;
-    }
-
-    public void setPos(int pos) {
-        this.pos = pos;
-    }
-
-    
 
 @Override
 // ----------PRENDER Y APAGAR----------------------
@@ -125,44 +69,28 @@ public String getFrequence()
 }
 public double getFMActualStation()
 {
-    return emisorasFM[pos];
+    return emisoraFM;
 }
 public int getAMActualStation()
 {
-    return emisorasAM[pos];
+    return emisoraAM;
 }
 public void setFMActualStation(double actualStation)
 {
-    if(pos!=0 && pos!=12)
-    {
-        pos=pos+1;
-    }
-    else if (pos==12)
-    {
-        pos=0;
-    }
-    emisorasFM[pos]=actualStation;
+    emisoraFM=actualStation;
     
 }
 public void setAMActualStation(int actualStation) 
 {
-    if(pos!=0 && pos!=12)
-    {
-        pos=pos+1;
-    }
-    else if (pos==12)
-    {
-        pos=0;
-    }
-    emisorasAM[pos]=actualStation;
+    emisoraAM=actualStation;
 }
 public void saveFMStation(double actualStation, int slot)
 {
-    emisoraFM=emisorasFM[slot-1];
+    emisorasFM[slot-1]=actualStation;
 }
 public void saveAMStation(int actualStation, int slot)
 {
-    emisoraAM=emisorasAM[slot-1];
+    emisorasAM[slot-1]=actualStation;
 }
 public double getFMSlot(int slot)
 {
@@ -176,11 +104,11 @@ public void Forward()
 {
     if (modulation==true) 
     {
-    emisoraAM = emisora + 10;
+    emisoraAM = emisoraAM + 10;
     System.out.println("La emisora es " + emisoraAM);
     } 
     else {
-    emisoraFM = emisora + 0.2;
+    emisoraFM = emisoraFM + 0.2;
     System.out.println("La emisora es " + emisoraFM);
     }
 }
@@ -188,11 +116,11 @@ public void Backward()
 {
     if (modulation==true) 
     {
-    emisoraAM = emisora + 10;
+    emisoraAM = emisoraAM - 10;
     System.out.println("La emisora es " + emisoraAM);
     } 
     else {
-    emisoraFM = emisora + 0.2;
+    emisoraFM = emisoraFM - 0.2;
     System.out.println("La emisora es " + emisoraFM);
     }
 }
