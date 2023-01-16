@@ -8,7 +8,7 @@ public class radio_metodos implements IRadio{ // declaracion
     // padre
 private Boolean modulation;
 private Boolean estado;
-private double emisoraAM;
+private int emisoraAM;
 private double emisoraFM;
 private int emisora;
 private int pos;
@@ -18,13 +18,71 @@ Scanner teclado = new Scanner(System.in);
 public radio_metodos() 
     {
     modulation = true;
-    emisoraAM = 87.9;
-    emisoraFM = 530;
+    emisoraFM = 87.9;
+    emisoraAM = 530;
     estado = false;
     pos = 0;
     emisorasAM=new int[12];
     emisorasFM=new double[12];
     }
+
+    public Boolean isModulation() {
+        return this.modulation;
+    }
+
+    public Boolean getModulation() {
+        return this.modulation;
+    }
+
+    public void setModulation(Boolean modulation) {
+        this.modulation = modulation;
+    }
+
+    public Boolean isEstado() {
+        return this.estado;
+    }
+
+    public Boolean getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public int getEmisoraAM() {
+        return this.emisoraAM;
+    }
+
+    public void setEmisoraAM(int emisoraAM) {
+        this.emisoraAM = emisoraAM;
+    }
+
+    public double getEmisoraFM() {
+        return this.emisoraFM;
+    }
+
+    public void setEmisoraFM(double emisoraFM) {
+        this.emisoraFM = emisoraFM;
+    }
+
+    public int getEmisora() {
+        return this.emisora;
+    }
+
+    public void setEmisora(int emisora) {
+        this.emisora = emisora;
+    }
+
+    public int getPos() {
+        return this.pos;
+    }
+
+    public void setPos(int pos) {
+        this.pos = pos;
+    }
+
+    
 
 @Override
 // ----------PRENDER Y APAGAR----------------------
@@ -50,6 +108,9 @@ public void setFrequence(String freq) throws Exception
     else if(Integer.parseInt(freq)==2)
     {
         modulation = false;
+    }else if(Integer.parseInt(freq) != 1 && Integer.parseInt(freq) != 2)
+    {
+        throw new Exception();
     }
     System.out.println("La frecuencia está en " + modulation);
 }
