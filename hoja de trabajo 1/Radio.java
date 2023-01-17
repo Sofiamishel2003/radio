@@ -6,7 +6,7 @@ import java.util.ArrayList;
 //  @ File Name : Principal.java
 //  @ Date : 11/8/2022
 //  @ Author : 
-//
+// BSLJLFAJSFKSAJKFKJASDFKJSAHFKJSDFDS
 //
 
 import java.util.Scanner;
@@ -110,7 +110,7 @@ public class Radio {
 											double estacionSeleccionada;
 											System.out.println("¿Qué emisora deseas guardar?: ");
 											estacionSeleccionada = teclado.nextDouble();
-											if(87.9<=estacionSeleccionada && estacionSeleccionada<=107.9 && estacionSeleccionada%0.2==5)
+											if(87.9<=estacionSeleccionada && estacionSeleccionada<=107.9 && estacionSeleccionada%0.2==0)
 											{
 												rolonas.saveFMStation(estacionSeleccionada, boton);
 											}
