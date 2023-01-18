@@ -24,7 +24,7 @@ public class Radio {
 		Scanner teclado = new Scanner(System.in);
 		String menu = "\n\nPor favor seleccione una opción que desee \n1. Encender radio. \n2. Cambiar de AM a FM. \n3. Avanzar el dial de las emisoras \n4. Guardar emisora \n5. Seleccionar emisora \n6. Apagar Radio y salir.";
 		int opcionPrincipal = 1;
-		while(opcionPrincipal < 7 && opcionPrincipal >= 1) 
+		while(opcionPrincipal < 6 && opcionPrincipal >= 1) 
 		{
 			try 
 			{
