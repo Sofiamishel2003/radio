@@ -1,3 +1,11 @@
+//
+//
+//  @ Project : hoja de trabajo 1
+//  @ File Name : Radio.java
+//  @ Date : 17/01/2023
+//  @ Author : Sofía Velásquez, Joaquín Campos, Julio García Salas
+// 
+//
 import java.util.Scanner;
 import java.util.Random;
 public class radio_metodos implements IRadio{ // declaracion
@@ -40,10 +48,19 @@ public void off()
     estado = false;
     System.out.println("El radio está apagado");
 }
+
+/** 
+ * @return boolean
+ */
 public boolean isOn()
 {
     return estado;
 }
+
+/** 
+ * @param freq
+ * @throws Exception
+ */
 // ----------FRECUENCIA-----------------------
 public void setFrequence(String freq) throws Exception
 {   if (Integer.parseInt(freq)==1) {
@@ -58,6 +75,10 @@ public void setFrequence(String freq) throws Exception
     }
     System.out.println("La frecuencia está en " + modulation);
 }
+
+/** 
+ * @return String
+ */
 public String getFrequence()
 {
     String ans="FM";
@@ -67,35 +88,71 @@ public String getFrequence()
     }
     return ans;
 }
+
+/** 
+ * @return double
+ */
 public double getFMActualStation()
 {
     return emisoraFM;
 }
+
+/** 
+ * @return int
+ */
 public int getAMActualStation()
 {
     return emisoraAM;
 }
+
+/** 
+ * @param actualStation
+ */
 public void setFMActualStation(double actualStation)
 {
     emisoraFM=actualStation;
     
 }
+
+/** 
+ * @param actualStation
+ */
 public void setAMActualStation(int actualStation) 
 {
     emisoraAM=actualStation;
 }
+
+/** 
+ * @param actualStation
+ * @param slot
+ */
 public void saveFMStation(double actualStation, int slot)
 {
     emisorasFM[slot-1]=actualStation;
 }
+
+/** 
+ * @param actualStation
+ * @param slot
+ */
 public void saveAMStation(int actualStation, int slot)
 {
     emisorasAM[slot-1]=actualStation;
 }
+
+/** 
+ * @param slot
+ * @return double
+ */
 public double getFMSlot(int slot)
 {
     return emisorasFM[slot-1];
 }	
+
+/** 
+ * @param slot
+ * @return int
+ */
 public int getAMSlot(int slot)
 {
     return emisorasAM[slot-1];

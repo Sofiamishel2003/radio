@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 //
 //
-//  @ Project : Laboratorio4
-//  @ File Name : Principal.java
-//  @ Date : 11/8/2022
-//  @ Author : 
-// BSLJLFAJSFKSAJKFKJASDFKJSAHFKJSDFDS
+//  @ Project : hoja de trabajo 1
+//  @ File Name : Radio.java
+//  @ Date : 17/01/2023
+//  @ Author : Sofía Velásquez, Joaquín Campos, Julio García Salas
+// 
 //
 
 import java.util.Scanner;
@@ -14,6 +14,9 @@ import javax.lang.model.util.ElementScanner6;
 import java.util.ArrayList;
 
 public class Radio {
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) 
     {
 		radio_metodos rolonas = new radio_metodos();
@@ -21,17 +24,17 @@ public class Radio {
 		Scanner teclado = new Scanner(System.in);
 		String menu = "\n\nPor favor seleccione una opción que desee \n1. Encender radio. \n2. Cambiar de AM a FM. \n3. Avanzar el dial de las emisoras \n4. Guardar emisora \n5. Seleccionar emisora \n6. Apagar Radio y salir.";
 		int opcionPrincipal = 1;
-		while(opcionPrincipal < 7 && opcionPrincipal >= 1)
+		while(opcionPrincipal < 7 && opcionPrincipal >= 1) 
 		{
-			try
+			try 
 			{
 				System.out.println(menu);
 				opcionPrincipal = teclado.nextInt();
 				switch(opcionPrincipal)
 				{
-					case 1:
+					case 1:  //opcion 1
 					{
-						if(rolonas.isOn() == false)
+						if(rolonas.isOn() == false) //verificación para saber si el radio ya se encuentra encendido
 						{
 							rolonas.on();
 						}else if(rolonas.isOn() == true)
@@ -42,10 +45,10 @@ public class Radio {
 					}
 					case 2:
 					{
-						if(rolonas.isOn() == true)
+						if(rolonas.isOn() == true) 
 						{
 							String freq = "";
-							System.out.println("¿En que frecuancia deseas tu radio? \n1. AM \n2. FM");
+							System.out.println("¿En que frecuancia deseas tu radio? \n1. AM \n2. FM"); //cambiar la frecuencia actual de la radio
 							freq = teclado.nextLine();
 							freq = teclado.nextLine();
 							rolonas.setFrequence(freq);
@@ -55,7 +58,7 @@ public class Radio {
 					}
 					case 3:
 					{
-						if(rolonas.isOn() == true)
+						if(rolonas.isOn() == true) //verificar si el radio está encendido para poder evanzar o retroceder el dial de las emisoras
 						{
 							int opcionAdeAtras = 1;
 							while(opcionAdeAtras < 3 && opcionAdeAtras >= 1)
@@ -90,7 +93,7 @@ public class Radio {
 									{
 										System.out.println("¿En que número de botón quisiera guardar la emisora? (solo hay 12 botones)");
 										int boton = teclado.nextInt();
-										if (rolonas.getFrequence()=="AM")
+										if (rolonas.getFrequence()=="AM") //verificar si la radio está en FM o AM para poder guardarlo en su respectivo botón
 										{
 											rolonas.saveAMStation(rolonas.getAMActualStation(), boton);
 											System.out.println("¡Emisora guardada!");
@@ -108,14 +111,14 @@ public class Radio {
 										if(rolonas.getFrequence()=="FM") 
 											{
 											double estacionSeleccionada;
-											System.out.println("¿Qué emisora deseas guardar?: ");
+											System.out.println("¿Qué emisora deseas guardar?: "); //si el usuario desea guardar una emisora propia, tiene que ser múltiplo de 0.2 o de 10
 											estacionSeleccionada = teclado.nextDouble();
 											if(87.9<=estacionSeleccionada && estacionSeleccionada<=107.9 && estacionSeleccionada%0.2==0)
 											{
 												rolonas.saveFMStation(estacionSeleccionada, boton);
 											}
 											else
-											{
+											{ //si no cumple con la condición no se podrá guardar la emisora
 												System.out.println("Emisora ingresada incorrecta");
 											}
 											}
@@ -162,7 +165,7 @@ public class Radio {
 					}
 				}
 			}
-			catch(Exception e){
+			catch(Exception e){ //progra defensiva ante cualquier error del sistema.
 				System.out.println("Error dato incoherente");
 
 			}
